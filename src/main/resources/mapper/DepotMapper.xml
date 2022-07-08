@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cs623project.mapper.DepotMapper">
+
+    <resultMap id="Depot" type="com.example.cs623project.entity.Depot">
+        <id column="dep_id" property="depId" jdbcType="CHAR"></id>
+
+        <result column="addr" property="addr"/>
+        <result column="volume" property="volume"/>
+    </resultMap>
+
+
+    <insert id="insert" >
+        INSERT INTO Depot (
+            dep_id,
+            addr,
+            volume
+        ) VALUES (
+                     #{depId},
+                     #{addr},
+                     #{volume}
+                 )
+    </insert>
+
+    <delete id="deleteDepotById" parameterType="java.lang.String">
+        DELETE FROM Depot
+        WHERE dep_id = #{depId, jdbcType=CHAR}
+
+    </delete>
+</mapper>
